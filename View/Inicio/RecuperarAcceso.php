@@ -1,3 +1,7 @@
+<?php
+  include_once $_SERVER['DOCUMENT_ROOT'] . '/AmbienteWebClienteServidor/Controller/InicioController.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,12 +33,12 @@
                 </a>
               </div>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="formAuthentication" class="mb-3" action="" method="POST">
                 <div class="mb-3">
                  <label for="email" class="form-label">Correo Electrónico</label>
                    <input type="text" class="form-control" id="CorreoElectronico" name="CorreoElectronico" />
                 </div>
-                <button class="btn btn-primary d-grid w-100">Procesar</button>
+                <button class="btn btn-primary d-grid w-100" id="btnRecuperarAcceso" name="btnRecuperarAcceso" type="submit" >Procesar</button>
               </form>
               <div class="text-center">
                 <a href="IniciarSesion.php" class="d-flex align-items-center justify-content-center">

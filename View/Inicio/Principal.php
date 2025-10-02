@@ -1,5 +1,5 @@
 <?php
-  include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/LayoutInterno.php';
+  include_once $_SERVER['DOCUMENT_ROOT'] . '/AmbienteWebClienteServidor/View/LayoutInterno.php';
 ?>
 
 <!DOCTYPE html>
