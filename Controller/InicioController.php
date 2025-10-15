@@ -3,13 +3,7 @@
 
   include_once $_SERVER['DOCUMENT_ROOT'] . '/AmbienteWebClienteServidor/Model/InicioModel.php';
 
-    if(isset($_POST["btnIniciarSesion"]))
-    {
-        //Enviamos el correo y la contraseña a validar
 
-        header("Location: ../../View/Inicio/Principal.php");
-        exit;
-    }
 
     if(isset($_POST["btnCrearCuenta"]))
     {
@@ -31,6 +25,25 @@
         }
     }
 
+        if(isset($_POST["btnIniciarSesion"]))
+    {
+        $correoElectronico = $_POST["CorreoElectronico"];
+        $contrasenna = $_POST["Contrasenna"];
+
+        $resultado = ValidarCuentaModel($correoElectronico,$contrasenna);
+
+        if($resultado != null && $resultado -> num_rows > 0)
+        {
+            header("Location: ../../View/Inicio/Principal.php");
+            exit;
+        }
+        else
+        {
+            $_POST["Mensaje"] = "No se ha podido validar la cuenta ingresada";
+        }
+
+    }
+    
     if(isset($_POST["btnRecuperarAcceso"]))
     {
         
