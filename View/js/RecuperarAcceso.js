@@ -1,16 +1,16 @@
  $(function () {
     
-
     $("#formRecuperarAcceso").validate({
-      rules: {
-        CorreoElectronico: {
-          required: true,
+        rules: {
+            CorreoElectronico: {
+                required: true
+            }
         },
-      },
-      messages: {
-        CorreoElectronico: {
-          required: "* Requerido",
-        },
-      },
+        messages: {
+            CorreoElectronico: {
+                required: "* Requerido"
+            }
+        }
     });
-  });
+
+});

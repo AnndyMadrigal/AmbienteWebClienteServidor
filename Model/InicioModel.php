@@ -1,10 +1,10 @@
 <?php
 
 
-  include_once $_SERVER['DOCUMENT_ROOT'] . '/AmbienteWebClienteServidor/Model/ConexionModel.php';
+  include_once $_SERVER['DOCUMENT_ROOT'] . '/AmbienteWebClienteServidor/Model/UtilesModel.php';
 
 
-  function CrearCuentaModel($identificacion, $nombre, $correoElectronico, $contrasenna)
+    function CrearCuentaModel($identificacion, $nombre, $correoElectronico, $contrasenna)
     {
       try {
           $context = OpenConnection();
@@ -17,7 +17,7 @@
           CloseConnection($context);
 
           return $resultado;
-      } catch (Exception $e) {
+      } catch (Exception $error) {
           SaveError($error); // Llamada a la función para guardar el error
                             //Se pone antes del return porque despues del return no se ejecuta nada
 
@@ -26,7 +26,7 @@
 
     }
 
-  function ValidarCuentaModel( $correoElectronico, $contrasenna)
+    function ValidarCuentaModel( $correoElectronico, $contrasenna)
     {
       try {
           $context = OpenConnection();
@@ -41,7 +41,7 @@
 
           return $resultado;
           } 
-          catch (Exception $e) 
+          catch (Exception $error) 
           {
             SaveError($error); // Llamada a la función para guardar el error
                               //Se pone antes del return porque despues del return no se ejecuta nada
@@ -67,12 +67,34 @@
 
           return $resultado;
           } 
-          catch (Exception $e) 
+          catch (Exception $error) 
           {
             SaveError($error); // Llamada a la función para guardar el error
                               //Se pone antes del return porque despues del return no se ejecuta nada
                               
             return null; //se pone NULL porque es un OBJETO
+      }
+
+    }
+
+    function ActualizarContrasennaModel($ConsecutivoUsuario, $ContrasennaGenerada)
+    {
+      try {
+          $context = OpenConnection();
+
+          //llamar al procedimiento almacenado
+          $sentencia = "CALL ActualizarContrasenna('$ConsecutivoUsuario', '$ContrasennaGenerada')";
+
+          $resultado = $context -> query($sentencia);
+
+          CloseConnection($context);
+
+          return $resultado;
+      } catch (Exception $error) {
+          SaveError($error); // Llamada a la función para guardar el error
+                            //Se pone antes del return porque despues del return no se ejecuta nada
+
+          return false;//siempre que se haga un INSERT, UPDATE o DELETE se devuelve un BOOLEAN
       }
 
     }
