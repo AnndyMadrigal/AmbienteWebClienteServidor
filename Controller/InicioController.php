@@ -46,6 +46,18 @@
     
     if(isset($_POST["btnRecuperarAcceso"]))
     {
-        
+        $correoElectronico = $_POST["CorreoElectronico"];
+
+        $resultado = ValidarCorreoModel($correoElectronico);
+
+        if($resultado != null && $resultado -> num_rows > 0)
+        {
+            header("Location: ../../View/Inicio/Principal.php");
+            exit;
+        }
+        else
+        {
+            $_POST["Mensaje"] = "No se ha podido recuperar el acceso";
+        }
     }
 ?>
